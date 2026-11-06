@@ -2,6 +2,8 @@
 
 版本 0.4.0。只修改 HTTP Host 標頭，直接在 Firefox 工具列檢視及編輯規則。只需桌面版 Firefox 140 以上，不需要 Python、代理伺服器或本機輔助程式。
 
+安裝：[Firefox 附加元件頁面](https://addons.mozilla.org/addon/host-switcher-header-tools/)
+
 ## 使用方式
 
 1. 點擊 Host Switcher 圖示開啟快速編輯視窗。
