@@ -1,0 +1,26 @@
+# macOS metadata
+.DS_Store
+._*
+__MACOSX/
+
+# Generated extension packages
+*.zip
+*.xpi
+web-ext-artifacts/
+
+# Local dependencies, caches and logs
+node_modules/
+coverage/
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+
+# Editor-specific local settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "Host Switcher",
+  "version": "0.4.0",
+  "description": "快速修改 HTTP Host 標頭，支援工具列直接編輯規則與即時開關。",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "firefox-hosts@local.example",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "rules.js",
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Host Switcher",
+    "default_icon": "icons/hosts.svg",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icons/hosts.svg",
+    "96": "icons/hosts.svg"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "incognito": "not_allowed"
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Host Switcher · 規則管理</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <main class="workspace">
+    <header class="header"><div class="brand"><img src="icons/hosts.svg" width="42" height="42" alt=""><div><p class="eyebrow">HOST SWITCHER</p><h1>即時切換 HTTP Host 標頭。</h1></div></div><span class="local-tag">僅此 Firefox</span></header>
+    <section class="panel overview" aria-label="運作狀態">
+      <div><p class="eyebrow">運作狀態</p><h2 id="status">讀取中…</h2><p id="detail" class="muted"></p></div>
+      <div class="overview-actions"><label class="switch-label"><input type="checkbox" id="enabled" role="switch" disabled> 啟用擴充套件</label></div>
+    </section>
+    <section class="panel rules-panel header-panel">
+      <div class="section-heading"><div><h2>Host 標頭 <span id="header-count" class="count">0 條規則</span></h2><p class="muted">依請求主機設定送出的 Host 標頭，規則儲存在本機。</p></div><label class="switch-label"><input type="checkbox" id="headers-enabled" role="switch" disabled> 修改 Host 標頭</label></div>
+      <form id="header-form" class="add-form">
+        <label>請求網域或 IP（不含埠號）<input id="header-source" placeholder="127.0.0.1" required autocomplete="off" spellcheck="false" maxlength="253"></label>
+        <span class="arrow" aria-hidden="true">→</span>
+        <label>送出的 Host（可含埠號）<input id="header-host" placeholder="app.example.test:8080" required autocomplete="off" spellcheck="false" maxlength="260"></label>
+        <button id="add-header" type="submit" disabled>新增標頭規則</button>
+      </form>
+      <div class="table-scroll"><table><thead><tr><th class="toggle-column">啟用</th><th>請求網域或 IP</th><th>送出的 Host</th><th class="actions-column"><span class="sr-only">操作</span></th></tr></thead><tbody id="header-rules"></tbody></table></div>
+      <div id="header-empty" class="empty"><h3>用一個開關，切換虛擬主機。</h3><p>新增規則後，下一個符合來源的網路請求就會套用。</p></div>
+    </section>
+    <p id="message" role="status" aria-live="polite"></p>
+    <aside class="notes"><p><strong>即時切換</strong>　儲存與開關會套用到後續的新請求，不會修改已送出的請求。重新載入網頁可重新發出請求；快取與 Service Worker 可能直接提供舊內容。</p><p><strong>HTTPS</strong>　修改 Host 不會替換網址列網域；TLS 與憑證驗證仍依原網址處理。</p><p><strong>比對方式</strong>　僅精確比對請求的主機名稱，不含埠號；子網域需另外新增。來源規則適用該主機的所有埠號。</p></aside>
+  </main>
+  <template id="header-template"><tr><td><input type="checkbox" class="rule-enabled" aria-label="啟用標頭規則"></td><td><input class="rule-source" aria-label="請求網域或 IP" spellcheck="false" autocomplete="off"></td><td><input class="rule-host" aria-label="送出的 Host" spellcheck="false" autocomplete="off"></td><td class="row-actions"><button class="save secondary" type="button">儲存</button><button class="delete quiet" type="button">刪除</button></td></tr></template>
+  <script src="rules.js"></script><script src="options.js"></script>
+</body></html>

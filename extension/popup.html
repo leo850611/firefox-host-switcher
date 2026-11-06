@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Host Switcher · 快速編輯</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="popup.css"></head>
+<body class="popup quick-popup">
+  <header class="quick-header">
+    <div class="quick-top"><div class="brand"><img src="icons/hosts.svg" width="30" height="30" alt=""><div><p class="eyebrow">HOST SWITCHER</p><h1>快速編輯</h1></div></div><label class="switch-label">啟用<input id="enabled" type="checkbox" role="switch" disabled></label></div>
+    <div class="quick-status"><h2 id="status">讀取中…</h2><p id="detail" class="muted"></p></div>
+    <div class="quick-site" id="current-site" hidden><span id="site-name"></span><button id="fill-current" class="quiet" type="button">帶入此網站</button></div>
+  </header>
+  <main class="quick-content">
+    <section id="headers-pane" aria-label="Host 標頭規則">
+      <div class="quick-section"><p>Host 標頭 <span id="header-count" class="count">0 條規則</span></p><label class="switch-label">修改 Host 標頭<input id="headers-enabled" type="checkbox" role="switch" disabled></label></div>
+      <form id="header-form" class="quick-add">
+        <label>請求網域或 IP<input id="header-source" placeholder="127.0.0.1" required autocomplete="off" spellcheck="false" maxlength="253"></label>
+        <label>Host 標頭值<input id="header-host" placeholder="app.example.test:8080" required autocomplete="off" spellcheck="false" maxlength="260"></label>
+        <button id="add-header" type="submit" disabled>＋ 新增</button>
+      </form>
+      <table><colgroup><col class="quick-check"><col class="quick-source"><col><col class="quick-actions"></colgroup><thead><tr><th><span class="sr-only">啟用</span></th><th>請求主機</th><th>Host 標頭值</th><th><span class="sr-only">操作</span></th></tr></thead><tbody id="header-rules"></tbody></table>
+      <div id="header-empty" class="quick-empty"><strong>新增第一條 Host 規則</strong><p>在上方輸入來源與 Host，儲存後立即套用到新請求。</p></div>
+    </section>
+  </main>
+  <footer class="quick-footer"><div><p id="message" role="status" aria-live="polite"></p><p class="quick-hint">修改後按儲存或 Enter；開關立即套用到後續請求。</p></div><button id="manage" class="secondary" type="button">詳細設定 ↗</button></footer>
+  <template id="header-template"><tr><td><input type="checkbox" class="rule-enabled" aria-label="啟用 Host 規則"></td><td><input class="rule-source" aria-label="請求主機" spellcheck="false" autocomplete="off"></td><td><input class="rule-host" aria-label="Host 標頭值" spellcheck="false" autocomplete="off"></td><td class="row-actions"><button class="save secondary" type="button">儲存</button><button class="delete quiet" type="button" title="刪除規則" aria-label="刪除 Host 規則">×</button></td></tr></template>
+  <script src="rules.js"></script><script src="options.js"></script><script src="popup.js"></script>
+</body>
+</html>
